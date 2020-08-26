@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import Pages.AmazonPage;
@@ -28,6 +29,7 @@ try {
 		int price = Integer.valueOf(s1);
 		if( price > lowestPrice && price < highestprice) {
 			profile.get(i).click();
+			driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 			break;
 		}
 	}
@@ -45,7 +47,7 @@ try {
 		try {
 			driver.get("https://www.amazon.in");
 			search("iphone",65000,75000);
-			search("iphone watch",1000,20000);
+			search("iphone watch",1000,30000);
 			MobileElement ele1 = driver.findElement(By.xpath("//span[@class='nav-cart-count']"));
 			JavascriptExecutor executor = (JavascriptExecutor)driver;
 			executor.executeScript("arguments[0].click();", ele1);

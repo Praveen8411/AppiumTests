@@ -1,5 +1,6 @@
 package Tests;
 
+import java.io.File;
 import java.net.URL;
 
 import org.openqa.selenium.By;
@@ -18,6 +19,7 @@ import io.appium.java_client.remote.MobileCapabilityType;
 public class BaseClass {
 	
 	static AppiumDriver<MobileElement> driver;
+	String driverPath = "Driver" + File.separator + "chromedriver.exe";
 
 	@BeforeTest
 	public void setup() {
@@ -42,16 +44,16 @@ public class BaseClass {
 		
 		URL url = new URL("http://127.0.0.1:4723/wd/hub");
 		driver = new AppiumDriver<MobileElement>(url, cap);
-	
-		
 	}
 	catch(Exception e) {
-		System.out.println("Cause is : "+e.getCause());
-		System.out.println("Message is : "+e.getMessage()); 
 		e.printStackTrace();
 	}
 		
-}		
+}	
+	@Test
+	public void test() {
+		System.out.println("Testing");
+	}
 	
 	@AfterTest
 	public void teardown() {
